@@ -46,7 +46,8 @@ class Paddle {
         this.width = width; 
         this.height = height; 
         this.isPlayerControlled = isPlayerControlled; 
-        this.speed = 5; 
+        this.speed = 5;
+        this.directionY = 1; //Propiedad para la dirección vertical (1 = abajo, -1 = arriba)
     } 
  
     draw() { 
@@ -64,13 +65,16 @@ class Paddle {
  
     // Movimiento de la paleta automática (IA) 
     autoMove(ball) { 
-        if (ball.y < this.y + this.height / 2) { 
-            this.y -= this.speed;
-        } else if (ball.y > this.y + this.height / 2) { 
-            this.y += this.speed; 
-        } 
+        // Mueve la paleta en la dirección actual
+        this.y += this.speed * this.directionY;
+        // Si toca el borde superior o inferior, cambia la dirección
+        if (this.y <= 0) {
+            this.directionY = 1; // Cambia a movimiento hacia abajo
+        } else if (this.y + this.height >= canvas.height) {
+            this.directionY = -1; // Cambia a movimiento hacia arriba
+        }
     } 
-} 
+}
  
 // Clase Game (Controla el juego) 
 class Game { 
@@ -112,6 +116,7 @@ class Game {
  
         // Movimiento de la paleta 2 (Controlada por IA) 
         this.paddle2.autoMove(this.balls[0]); // Usamos la primera pelota como referencia para la IA
+
  
         // Colisiones con las paletas
         this.balls.forEach(ball => {
