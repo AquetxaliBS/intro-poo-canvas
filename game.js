@@ -81,11 +81,11 @@ class Game {
     constructor() { 
         // Crear múltiples pelotas con diferentes colores y tamaños
         this.balls = [
-            new Ball(canvas.width / 2, canvas.height / 2, 10, 5, 4, 'red'),
-            new Ball(canvas.width / 2, canvas.height / 2, 15, 7, 7, 'blue'),
-            new Ball(canvas.width / 2, canvas.height / 2, 20, 6, 5, 'orange'),
-            new Ball(canvas.width / 2, canvas.height / 2, 12, 6, 6, 'yellow'),
-            new Ball(canvas.width / 2, canvas.height / 2, 8, 5, 5, 'green')
+            new Ball(canvas.width / 2, canvas.height / 2, 10, 1, 1, 'red'),
+            new Ball(canvas.width / 2, canvas.height / 2, 15, 1, 2, 'blue'),
+            new Ball(canvas.width / 2, canvas.height / 2, 20, 2, 2, 'orange'),
+            new Ball(canvas.width / 2, canvas.height / 2, 12, 3, 2, 'yellow'),
+            new Ball(canvas.width / 2, canvas.height / 2, 8, 3, 1, 'green')
         ];
         this.paddle1 = new Paddle(0, canvas.height / 2 - 100, 10, 200, true); // Controlado por el jugador 
         this.paddle2 = new Paddle(canvas.width - 10, canvas.height / 2 - 50, 10, 100); // Controlado por la computadora 
